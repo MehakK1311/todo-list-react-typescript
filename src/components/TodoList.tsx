@@ -1,20 +1,25 @@
-import { Todo } from "../models/models"
-import SingleTodo from "./singleTodo"
-import "./styles.css"
+import React from "react";
+import { Todo } from "../models/models";
+import SingleTodo from "./singleTodo";
 
-interface Props{
-    todos:Todo[],
-    setTodos: React.Dispatch<React.SetStateAction<Todo[]>>,
+interface props {
+  todos: Todo[];
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 }
 
-const TodoList = ({todos, setTodos}:Props) => {
+const TodoList: React.FC<props> = ({ todos, setTodos }) => {
   return (
     <div className="todos">
-        {todos.map(todo=>(
-            <SingleTodo todo={todo} key={todo.id} todos={todos} setTodos={setTodos} />
-        ))}
+      {todos?.map((todo) => (
+        <SingleTodo
+          todos={todos}
+          todo={todo}
+          key={todo.id}
+          setTodos={setTodos}
+        />
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default TodoList
+export default TodoList;
